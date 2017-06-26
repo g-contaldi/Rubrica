@@ -27,7 +27,7 @@
 				<input class="form-control" type="text" name="cognome"
 					placeholder="Inserisci cognome" required /><br> 
 			<label for="email">Telefono:</label>
-				<input class="form-control" type="number" name="tel" pattern="[0-9]"
+				<input class="form-control" type="number" name="tel" 
 					placeholder="Inserisci telefono" required /><br> 
 			<label for="email">Mail:</label>
 				<input class="form-control" type="email" name="mail"
