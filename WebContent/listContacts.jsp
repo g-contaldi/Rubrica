@@ -38,7 +38,7 @@
 						<c:forEach var="contact" items="${list}" varStatus="status">
 							<tr>
 								<td>${status.index +1}</td>
-								<td>${contact.nome}</td>
+								<td>${contact.getNome()}</td>
 								<td>${contact.cognome}</td>
 								<td>${contact.tel}</td>
 								<td>${contact.mail}</td>

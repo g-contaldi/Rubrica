@@ -29,7 +29,7 @@ public class DeleteContact extends HttpServlet {
 			contactDao.deleteContact(contactDao.getContactById(id));
 			response.sendRedirect("listContacts");
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			logger.severe(e.getMessage());
 		}
 	}
 

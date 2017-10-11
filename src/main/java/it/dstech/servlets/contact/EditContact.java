@@ -36,9 +36,9 @@ public class EditContact extends HttpServlet {
 			request.setAttribute("contact", contactById);
 			request.getRequestDispatcher("editContact.jsp").forward(request, response);
 		} catch (NumberFormatException e) {
-			logger.warning(e.getMessage());
+			logger.severe(e.getMessage());
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			logger.severe(e.getMessage());
 		}
 	}
 
@@ -54,7 +54,7 @@ public class EditContact extends HttpServlet {
 			contactDao.updateContact(contactById);
 			response.sendRedirect("listContacts");
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			logger.severe(e.getMessage());
 			response.sendRedirect("editContact?id=" + id + "&error=true");
 		}
 	}

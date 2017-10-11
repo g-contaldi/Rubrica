@@ -41,8 +41,7 @@ public class AddContact extends HttpServlet {
 			contactDao.saveContact(contact);
 			response.sendRedirect("listContacts");
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			response.sendRedirect("addContact?error=true");
 		}
 	}

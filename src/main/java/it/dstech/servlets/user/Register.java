@@ -38,7 +38,7 @@ public class Register extends HttpServlet {
 			userDao.saveUser(user);
 			response.sendRedirect("login");
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			logger.severe(e.getMessage());
 			response.sendRedirect("register?error=true");
 		}
 	}

@@ -24,9 +24,14 @@ public class Login extends HttpServlet {
 
 	UserDao userDao = new UserDaoImpl();
 
+	@Override
+	public void init() throws ServletException {
+		ServicesCrud.createEntityManager();
+		super.init();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ServicesCrud.createEntityManager();
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
@@ -48,7 +53,7 @@ public class Login extends HttpServlet {
 				response.sendRedirect("login?error=true");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			response.sendRedirect("login?error=true");
 		}
 	}

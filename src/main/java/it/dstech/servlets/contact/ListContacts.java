@@ -32,7 +32,7 @@ public class ListContacts extends HttpServlet {
 			request.setAttribute("list", listContactsByUser);
 			request.getRequestDispatcher("listContacts.jsp").forward(request, response);
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			logger.severe(e.getMessage());
 		}
 	}
 
