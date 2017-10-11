@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.dstech.dao.ContactDao;
-import it.dstech.dao.ContactDaoImpl;
 import it.dstech.model.Contact;
 import it.dstech.model.User;
+import it.dstech.service.ContactService;
+import it.dstech.service.ContactServiceImpl;
 
 @WebServlet("/addContact")
 public class AddContact extends HttpServlet {
@@ -21,7 +21,7 @@ public class AddContact extends HttpServlet {
 
 	private static final Logger logger = Logger.getLogger(AddContact.class.getName());
 
-	ContactDao contactDao = new ContactDaoImpl();
+	ContactService contactService = new ContactServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -38,7 +38,7 @@ public class AddContact extends HttpServlet {
 			contact.setTel(request.getParameter("tel"));
 			contact.setMail(request.getParameter("mail"));
 			contact.setUser((User) request.getSession().getAttribute("user"));
-			contactDao.saveContact(contact);
+			contactService.saveContact(contact);
 			response.sendRedirect("listContacts");
 		} catch (Exception e) {
 			logger.severe(e.getMessage());

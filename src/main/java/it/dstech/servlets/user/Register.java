@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.dstech.dao.UserDao;
-import it.dstech.dao.UserDaoImpl;
 import it.dstech.model.User;
+import it.dstech.service.UserService;
+import it.dstech.service.UserServiceImpl;
 
 @WebServlet("/register")
 public class Register extends HttpServlet {
@@ -20,7 +20,7 @@ public class Register extends HttpServlet {
 
 	private static final Logger logger = Logger.getLogger(Register.class.getName());
 
-	UserDao userDao = new UserDaoImpl();
+	UserService userService = new UserServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,7 +35,7 @@ public class Register extends HttpServlet {
 			User user = new User();
 			user.setUsername(request.getParameter("username"));
 			user.setPassword(request.getParameter("password"));
-			userDao.saveUser(user);
+			userService.saveUser(user);
 			response.sendRedirect("login");
 		} catch (Exception e) {
 			logger.severe(e.getMessage());

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.dstech.dao.ContactDao;
-import it.dstech.dao.ContactDaoImpl;
+import it.dstech.service.ContactService;
+import it.dstech.service.ContactServiceImpl;
 
 @WebServlet("/deleteContact")
 public class DeleteContact extends HttpServlet {
@@ -19,14 +19,14 @@ public class DeleteContact extends HttpServlet {
 
 	private static final Logger logger = Logger.getLogger(DeleteContact.class.getName());
 
-	ContactDao contactDao = new ContactDaoImpl();
+	ContactService contactService = new ContactServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
-			contactDao.deleteContact(contactDao.getContactById(id));
+			contactService.deleteContact(contactService.getContactById(id));
 			response.sendRedirect("listContacts");
 		} catch (Exception e) {
 			logger.severe(e.getMessage());

@@ -25,13 +25,13 @@
 					placeholder="Inserisci nome" required /><br> 
 			<label for="email">Cognome:</label>
 				<input class="form-control" type="text" name="cognome"
-					placeholder="Inserisci cognome" required /><br> 
+					placeholder="Inserisci cognome" /><br> 
 			<label for="email">Telefono:</label>
 				<input class="form-control" type="number" name="tel" 
 					placeholder="Inserisci telefono" required /><br> 
 			<label for="email">Mail:</label>
 				<input class="form-control" type="email" name="mail"
-					placeholder="Inserisci mail" required /><br>
+					placeholder="Inserisci mail" /><br>
 			</div>
 			<input class="btn btn-info" type="submit" value="Salva" style="float: right; margin"/>
 			<a href="listContacts" class="btn btn-danger" style="float: right; margin-right: 15px"> Cancel </a>

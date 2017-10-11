@@ -25,13 +25,13 @@
 					value="${contact.nome}" placeholder="Inserisci nome" required /><br>
 			<label for="email">Cognome:</label>
 				<input class="form-control" type="text" name="cognome"
-					value="${contact.cognome}" placeholder="Inserisci cognome" required /><br>
+					value="${contact.cognome}" placeholder="Inserisci cognome" /><br>
 			<label for="email">Telefono:</label>
 				<input class="form-control" type="number" name="telefono"
 					value="${contact.tel}" placeholder="Inserisci telefono" required /><br>
 			<label for="email">Mail:</label>
 				<input class="form-control" type="email" name="mail"
-					value="${contact.mail}" placeholder="Inserisci mail" required /><br>
+					value="${contact.mail}" placeholder="Inserisci mail" /><br>
 			</div>
 			<input class="btn btn-info" type="submit" value="Modifica" style="float: right; margin"/>
 			<a href="listContacts" class="btn btn-danger" style="float: right; margin-right: 15px"> Cancel </a>

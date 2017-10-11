@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.dstech.dao.ServicesCrud;
-import it.dstech.dao.UserDao;
-import it.dstech.dao.UserDaoImpl;
+import it.dstech.dao.HibernateDao;
 import it.dstech.model.User;
+import it.dstech.service.UserService;
+import it.dstech.service.UserServiceImpl;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -22,11 +22,11 @@ public class Login extends HttpServlet {
 
 	private static final Logger logger = Logger.getLogger(Login.class.getName());
 
-	UserDao userDao = new UserDaoImpl();
+	UserService userService = new UserServiceImpl();
 
 	@Override
 	public void init() throws ServletException {
-		ServicesCrud.createEntityManager();
+		HibernateDao.getSession();
 		super.init();
 	}
 
@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 
 		try {
-			User user = userDao.getUserByUsernameAndPassword(username, password);
+			User user = userService.getUserByUsernameAndPassword(username, password);
 			if (user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("logged", true);

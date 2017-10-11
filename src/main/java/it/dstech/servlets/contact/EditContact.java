@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.dstech.dao.ContactDao;
-import it.dstech.dao.ContactDaoImpl;
 import it.dstech.model.Contact;
 import it.dstech.model.User;
+import it.dstech.service.ContactService;
+import it.dstech.service.ContactServiceImpl;
 
 @WebServlet("/editContact")
 public class EditContact extends HttpServlet {
@@ -23,7 +23,7 @@ public class EditContact extends HttpServlet {
 
 	private int id;
 
-	ContactDao contactDao = new ContactDaoImpl();
+	ContactService contactService = new ContactServiceImpl();
 
 	Contact contactById = null;
 
@@ -32,7 +32,7 @@ public class EditContact extends HttpServlet {
 
 		try {
 			id = Integer.parseInt(request.getParameter("id"));
-			contactById = contactDao.getContactById(id);
+			contactById = contactService.getContactById(id);
 			request.setAttribute("contact", contactById);
 			request.getRequestDispatcher("editContact.jsp").forward(request, response);
 		} catch (NumberFormatException e) {
@@ -51,7 +51,7 @@ public class EditContact extends HttpServlet {
 			contactById.setTel(request.getParameter("telefono"));
 			contactById.setMail(request.getParameter("mail"));
 			contactById.setUser((User) request.getSession().getAttribute("user"));
-			contactDao.updateContact(contactById);
+			contactService.updateContact(contactById);
 			response.sendRedirect("listContacts");
 		} catch (Exception e) {
 			logger.severe(e.getMessage());
